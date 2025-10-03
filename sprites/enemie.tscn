@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://la2mcompnq2"]
+
+[ext_resource type="Script" uid="uid://djbl2wg1wfu44" path="res://ememie.gd" id="1_b7jfq"]
+[ext_resource type="Texture2D" uid="uid://c7lbaeryp8c4h" path="res://addons/simple_health_bar/sprites/il_300x300.6592932461_hdbi-removebg-preview.png" id="2_t081j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xo3y"]
+radius = 9.0
+height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b7jfq"]
+radius = 9.0
+height = 34.0
+
+[node name="RigidBody2D" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_b7jfq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["death"]]
+shape = SubResource("CapsuleShape2D_3xo3y")
+
+[node name="Il300x300_6592932461HdbiRemovebgPreview" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.08100001, 0.08399997)
+texture = ExtResource("2_t081j")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_b7jfq")

@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvn52ghikkr4f"]
+
+[ext_resource type="Texture2D" uid="uid://dduvedy0qrtum" path="res://art/coin.svg" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://crvqwenueohkr" path="res://sprites/playercontroller.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://drvgkns1v81b2" path="res://addons/simple_health_bar/health_bar.tscn" id="3_qcqa4"]
+[ext_resource type="PackedScene" uid="uid://ywyc4fiqoqqv" path="res://scenes/start-screen.tscn" id="4_ekdci"]
+[ext_resource type="PackedScene" uid="uid://csr2s8qw1fv16" path="res://scenes/death-screen.tscn" id="5_617v1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i3pqv"]
+radius = 49.5
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ekdci"]
+radius = 49.0
+height = 100.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4flbx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("CapsuleShape2D_i3pqv")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_qcqa4")]
+offset_left = -47.0
+offset_top = -72.0
+offset_right = 53.0
+offset_bottom = -62.0
+max_value = 5.0
+step = 0.1
+value = 5.0
+exp_edit = true
+
+[node name="start screen" parent="." instance=ExtResource("4_ekdci")]
+offset_left = -2307.0
+offset_top = -1540.5
+offset_right = -2067.0
+offset_bottom = -1380.5
+scale = Vector2(20, 20)
+
+[node name="death-screen" parent="." instance=ExtResource("5_617v1")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4111.0005
+offset_top = -1201.0001
+offset_right = -3871.0005
+offset_bottom = -1041.0001
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(20, 20)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_ekdci")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

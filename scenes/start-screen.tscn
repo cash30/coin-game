@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ywyc4fiqoqqv"]
+
+[ext_resource type="Texture2D" uid="uid://nv2cibh06p2e" path="res://scenes/title-screen.png" id="1_f7ihp"]
+[ext_resource type="Script" uid="uid://ck3sm0jgbyeh0" path="res://scenes/title_screen.gd" id="2_f7ihp"]
+
+[node name="start screen" type="MarginContainer"]
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+
+[node name="TitleScreen" type="Sprite2D" parent="."]
+position = Vector2(119.99999, 80.00001)
+scale = Vector2(0.21758838, 0.2680067)
+texture = ExtResource("1_f7ihp")
+script = ExtResource("2_f7ihp")
